@@ -3,6 +3,7 @@ package com.example.todolist
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.todolist.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -19,6 +20,18 @@ class MainActivity : AppCompatActivity() {
             NewTask(null).show(supportFragmentManager, "newTaskTag")
         }
 
+        setRecyclerView()
+
+    }
+
+    private fun setRecyclerView() {
+        val mainActivity = this
+        taskViewModel.taskItems.observe(this){
+            binding.listRecyclerView.apply{
+                layoutManager = LinearLayoutManager(applicationContext)
+                adapter = TaskItemAdapter(it)
+            }
+        }
     }
 
 }

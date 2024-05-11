@@ -6,12 +6,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist.databinding.TaskItemBoxBinding
 
 class TaskItemAdapter(
-    private val taskItems: List<TaskItem>
+    private val taskItems: List<TaskItem>,
+    private val clickListener: TaskItemClickListener
 ): RecyclerView.Adapter<taskItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): taskItemViewHolder {
         val from = LayoutInflater.from(parent.context)
         val binding = TaskItemBoxBinding.inflate(from, parent, false)
-        return taskItemViewHolder(parent.context, binding)
+        return taskItemViewHolder(parent.context, binding, clickListener)
     }
 
     override fun getItemCount(): Int = taskItems.size

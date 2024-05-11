@@ -2,4 +2,6 @@
     <string name="app_name">ToDoLIst</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="place_holder">Place Holder</string>
+    <string name="check_box">Check Box</string>
 </resources>

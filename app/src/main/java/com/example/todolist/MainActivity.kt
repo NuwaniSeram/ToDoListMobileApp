@@ -2,6 +2,7 @@ package com.example.todolist
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.todolist.databinding.ActivityMainBinding
@@ -9,13 +10,15 @@ import com.example.todolist.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity(), TaskItemClickListener {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var taskViewModel: TaskViewModel
+    private val taskViewModel: TaskViewModel by viewModels {
+        TaskItemModelFactory((application as ToDoApplication).repo)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        taskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
+
         binding.newTaskBtn.setOnClickListener {
             NewTask(null).show(supportFragmentManager, "newTaskTag")
         }

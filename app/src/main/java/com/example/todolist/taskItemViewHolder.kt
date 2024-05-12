@@ -31,8 +31,8 @@ class taskItemViewHolder(
             clickListener.editTaskItem(taskItem)
         }
 
-        if(taskItem.dueTime != null)
-            binding.time.text = timeFormat.format(taskItem.dueTime)
+        if(taskItem.dueTime() != null)
+            binding.time.text = timeFormat.format(taskItem.dueTime())
 
         else
             binding.time.text = ""

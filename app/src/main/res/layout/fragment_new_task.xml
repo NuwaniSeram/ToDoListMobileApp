@@ -70,4 +70,14 @@
         android:textColor="?colorOnPrimary"
         android:text="Save"/>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/deleteBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="20dp"
+        android:backgroundTint="?attr/colorPrimary"
+        android:textColor="?colorOnPrimary"
+        android:text="Delete"/>
+
 </LinearLayout>

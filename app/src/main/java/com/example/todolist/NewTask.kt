@@ -35,6 +35,7 @@ class NewTask(var taskItem: TaskItem?) : BottomSheetDialogFragment() {
         }
         else{
             binding.title.text = "New Task"
+            binding.deleteBtn.visibility = View.GONE
         }
 
         taskViewModel = ViewModelProvider(activity).get(TaskViewModel::class.java)

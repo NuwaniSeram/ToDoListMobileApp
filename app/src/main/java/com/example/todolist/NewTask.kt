@@ -7,8 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.example.todolist.databinding.FragmentNewTaskBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import kotlinx.coroutines.launch
 import java.time.LocalTime
 
 class NewTask(var taskItem: TaskItem?) : BottomSheetDialogFragment() {
@@ -44,6 +46,12 @@ class NewTask(var taskItem: TaskItem?) : BottomSheetDialogFragment() {
         }
         binding.timePickerBtn.setOnClickListener {
             openTimePicker()
+        }
+        binding.deleteBtn.setOnClickListener {
+            taskItem?.let {
+                taskViewModel.deleteTaskItem(it)
+            }
+            dismiss() // Dismiss the bottom sheet after deleting the task
         }
     }
 

@@ -3,6 +3,7 @@ package com.example.todolist
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.todolist.databinding.ActivityMainBinding
@@ -43,6 +44,17 @@ class MainActivity : AppCompatActivity(), TaskItemClickListener {
 
     override fun completeTaskItem(taskItem: TaskItem) {
         taskViewModel.setCompleted(taskItem)
+    }
+
+    override fun deleteTaskItem(taskItem: TaskItem) {
+        AlertDialog.Builder(this)
+            .setTitle("Delete Task")
+            .setMessage("Are you sure you want to delete this task?")
+            .setPositiveButton("Delete") { _, _ ->
+                taskViewModel.deleteTaskItem(taskItem)
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
     }
 
 }

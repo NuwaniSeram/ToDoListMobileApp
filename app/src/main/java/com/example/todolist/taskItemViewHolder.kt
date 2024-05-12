@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Paint
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist.databinding.TaskItemBoxBinding
+import com.google.android.material.button.MaterialButton
 import java.time.format.DateTimeFormatter
 
 class taskItemViewHolder(
@@ -30,6 +31,7 @@ class taskItemViewHolder(
         binding.taskBoxContainer.setOnClickListener{
             clickListener.editTaskItem(taskItem)
         }
+
 
         if(taskItem.dueTime() != null)
             binding.time.text = timeFormat.format(taskItem.dueTime())
